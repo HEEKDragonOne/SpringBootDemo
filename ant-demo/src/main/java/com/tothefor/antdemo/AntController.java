@@ -1,7 +1,11 @@
 package com.tothefor.antdemo;
 
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Author DragonOne
@@ -18,18 +22,35 @@ public class AntController {
      */
 
     @RequestMapping("/ttf/test?")
-    public Object testA(){
+    public Object testA() {
         return "ant-?";
     }
 
     @RequestMapping("/ttf/test*")
-    public Object testB(){
+    public Object testB() {
         return "ant-*";
     }
 
     @RequestMapping("/**/test")
-    public Object testC(){
+    public Object testC() {
         return "ant-**";
+    }
+
+    @RequestMapping("/cook")
+    public Object cook(HttpServletResponse response) {
+        // 创建一个 cookie
+        Cookie cookie = new Cookie("username", "www.tothefor.com");
+        //设置 cookie过期时间
+        cookie.setMaxAge(7 * 24 * 60 * 60);
+        //添加到 response 中
+        response.addCookie(cookie);
+        return "ok";
+    }
+
+    @RequestMapping("/get/cook")
+    public Object getCook(@CookieValue(value = "username", defaultValue = "Atta") String cook) {
+
+        return "Get 到的"+cook;
     }
 
 }
