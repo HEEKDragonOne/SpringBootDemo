@@ -1,11 +1,16 @@
 package com.tothefor.antdemo;
 
+import com.alibaba.fastjson.JSONObject;
+import com.tothefor.antdemo.json.Man;
+import com.tothefor.antdemo.json.Person;
+import com.tothefor.antdemo.json.Show;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 /**
  * @Author DragonOne
@@ -50,7 +55,21 @@ public class AntController {
     @RequestMapping("/get/cook")
     public Object getCook(@CookieValue(value = "username", defaultValue = "Atta") String cook) {
 
-        return "Get 到的"+cook;
+        return "Get 到的" + cook;
+    }
+
+    @RequestMapping("/get/json")
+    public Show getJson() {
+        return Show.builder()
+                .man(Man.builder()
+                        .username("man-name")
+                        .website("man-website").build())
+                .person(Person.builder()
+                        .username("person-name")
+                        .website("person-website")
+                        .build())
+                .build()
+                ;
     }
 
 }
