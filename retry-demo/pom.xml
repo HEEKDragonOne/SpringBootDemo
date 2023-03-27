@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.tothefor</groupId>
-    <artifactId>auto-demo</artifactId>
+    <artifactId>retry-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>auto-demo</name>
+    <name>retry-demo</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
@@ -78,7 +78,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.tothefor.autodemo.AutoDemoApplication</mainClass>
+                    <mainClass>com.tothefor.retrydemo.RetryDemoApplication</mainClass>
                     <skip>true</skip>
                 </configuration>
                 <executions>
